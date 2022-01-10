@@ -19,6 +19,10 @@
         그 내부에서는 JSX를 return 하도록 코딩해야 한다.
     - 최상위 엘리먼트가 반드시 한개만 존재해야 한다.
      -->
+
+    <style>
+        #test{color: blue;}
+    </style>
     <h2>JSX(JavaScript XML) 사용시</h2>
     <div id="myDiv1"></div>
     
@@ -44,7 +48,7 @@
         JSX를 사용하여 렌더링한다. HTML태그 형태와 유사하게 기술하면 되므로
         편리하다.
         */
-        const jsxElement = <h4>JSX 좋아요~</h4>;
+        const jsxElement = <h4 id='test'>JSX 좋아요~</h4>;
         ReactDOM.render(jsxElement, document.getElementById('myDiv1'));
 
 
