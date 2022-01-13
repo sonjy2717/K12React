@@ -69,7 +69,7 @@ class App extends Component {
     else if (this.state.mode === 'create') {
       //create일 때는 입력폼이 보인다.
       //자식 컴포넌트에서 폼값을 받기 위해 onSubmitValue라는 props를 내려준다.
-      _article = <CreateForm onSubmitValue={function(_title, _desc) {
+      _article = <CreateForm onSubmitValue={(_title, _desc) => {
         console.log(_title, _desc);
         
         //일련번호 부여를 위해 +1 증가
@@ -87,7 +87,7 @@ class App extends Component {
           mode : 'read',
           selected_content_id : this.max_content_id
         });
-      }.bind(this)}></CreateForm>;
+      }}></CreateForm>;
     }
     else if (this.state.mode === 'update') {
       /*
@@ -109,7 +109,7 @@ class App extends Component {
       }
 
       _article = <UpdateForm readData={_readData} 
-        onSubmitValue={function(_id, _title, _desc) {
+        onSubmitValue={(_id, _title, _desc) => {
         //전송된 폼값을 확인
         console.log(_id, _title, _desc);
 
@@ -137,7 +137,7 @@ class App extends Component {
           contents : _contents,
           mode : 'read'
         });
-      }.bind(this)}></UpdateForm>;
+      }}></UpdateForm>;
     }
     else if (this.state.mode === 'delete') {
       //여기서 처리하면 렌더링이 두번 되므로 비효율적이다.
@@ -151,27 +151,27 @@ class App extends Component {
       welcome으로 변경하는 기능이 정의되었다. */}
         <Subject 
           title={this.state.subject.title} sub={this.state.subject.sub}
-          onChangePage={function() {
+          onChangePage={() => {
             //alert('이벤트 확인용(부모)');
             this.setState({mode:'welcome'});
-          }.bind(this)}>
+          }}>
         </Subject>
 
         {/* Navi컴포넌트로 state 변경 기능을 가진 함수를 props로 내려준다. 
         자식은 해당 props를 호출하고, 이때 data-id로 지정된 값을 매개변수로 전달해준다.
         이를 통해 state값을 변경한다.*/}
         <Navi data={this.state.contents}
-          onChangePage={function(id) {
+          onChangePage={(id) => {
             //alert('이벤트 확인용(Navi)');
             console.log('content_id', id);
             this.setState({
               mode : 'read',
               selected_content_id : Number(id)
             });
-          }.bind(this)}>
+          }}>
         </Navi>
 
-        <Buttons onChangeMode={function(btn_mode) {
+        <Buttons onChangeMode={(btn_mode) => {
           //여기서 삭제 처리를 하면 렌더링을 한번만 해도 되므로 효율적이다.
           if (btn_mode === 'delete') {
             //리엑트에서 confirm()을 사용할때는 반드시 window를 붙여야 한다.
@@ -202,7 +202,7 @@ class App extends Component {
               mode : btn_mode
             });
           }
-        }.bind(this)}>
+        }}>
         </Buttons>
 
         {/* content와 article은 동시에 출력되면 안되므로 if문

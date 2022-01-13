@@ -28,7 +28,7 @@ class UpdateForm extends Component {
             <article>
                 <h2>Update</h2>
                 {/* 서브밋 이벤트 리스너에서 이벤트 객체를 통해 입력값을 전송한다. */}
-                <form action="/create_process" method="post" onSubmit={function(e) {
+                <form action="/create_process" method="post" onSubmit={(e) => {
                         //submit되었을때 화면의 새로고침 차단
                         e.preventDefault();
                         //부모가 내려준 props를 통해 폼값을 전달한다.
@@ -37,7 +37,7 @@ class UpdateForm extends Component {
                             e.target.title.value,
                             e.target.desc.value
                         );
-                    }.bind(this)
+                    }
                 }>
                     {/* 기존 게시물에 대한 수정이므로 게시물 아이디를 저장할 hidden상자 필요 */}
                     {/* 
