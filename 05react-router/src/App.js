@@ -94,12 +94,12 @@ function Contact() {
 /*
 useParams() : 파라미터로 전송된 값을 받아오기 위한 리액트 훅으로
   <Route path="/Topics/:topic_cate">와 같이 라우팅 처리를 할때
-  파라미터를 ':변수명' 형태로 전송하게 된다.
+  파라미터를 ":변수명" 형태로 전송하게 된다.
 */
 function Desc() {
   //파라미터를 받아오기 위한 훅을 실행
   let params = useParams();
-  console.log("params", params); //topic_cate : "qna"와 같이 출력됨
+  console.log("params", params); //topic_cate : 'qna'와 같이 출력됨
   let topic_cate = params.topic_cate; //파라미터 값을 얻어옴
   //일치하는 파라미터가 없을 경우 출력할 기본내용 추가
   let selected_item = {
